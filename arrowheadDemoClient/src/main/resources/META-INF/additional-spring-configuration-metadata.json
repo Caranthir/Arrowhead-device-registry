@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "Arrowheadserveraddress",
+      "type": "java.lang.String",
+      "description": "Description for Arrowheadserveraddress."
+  }
+] }

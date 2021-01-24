@@ -1,0 +1,48 @@
+<p>
+  <mat-toolbar>
+    <span>List of Devices</span>
+  </mat-toolbar>
+</p>
+
+<button mat-button (click)="showDevices()">Refresh</button>
+<span *ngIf="devices.length else elseBlock">
+
+<table mat-table [dataSource]="devices" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="deviceName">
+    <th mat-header-cell *matHeaderCellDef> Device name </th>
+    <td mat-cell *matCellDef="let device"> {{device.device_name}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="lastNotificationDate">
+    <th mat-header-cell *matHeaderCellDef> Last Notification Date </th>
+    <td mat-cell *matCellDef="let device"> {{device.last_notification_date}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let device"> {{device.status}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="address">
+    <th mat-header-cell *matHeaderCellDef> Address </th>
+    <td mat-cell *matCellDef="let device"> {{device.address}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="port">
+    <th mat-header-cell *matHeaderCellDef> Port </th>
+    <td mat-cell *matCellDef="let device"> {{device.port}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+    </span>
+<ng-template #elseBlock>No devices found!</ng-template>
