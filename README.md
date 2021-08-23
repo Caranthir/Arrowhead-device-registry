@@ -32,15 +32,26 @@ To enter the authentication information of the database, edit the following prop
 spring.datasource.username=<USERNAME>
 spring.datasource.password=<PASSWORD>
 ```
-The user needs the rights to create databases and tables in the database. The default username is root and the default password is admin in the properties file. If you use the prebuilt jar file to run the server application, you can find the application.properties file in /BOOT-INF/classes/ directory in the jar file. 
+The user needs the rights to create databases and tables in the database. The default username is root and the default password is admin in the properties file.
+After entering the database information, you need to enter the information about the backend server to the UI. You need to know the ip of the server, where the Device Registry will run. In the /ArrowheadUI/src/environments folder, you will find the environment.prod.ts file, where you need to edit 
 
-In the prebuilt jar file, the UI is already integrated. When starting the server application, the UI should also start automatically. If you edit the UI and want to integrate the UI in the Spring Boot application, execute the following command in the folder of the UI code:
+```
+  serverUrl: '<SERVERIP>',
+  serverPort : '<SERVERPORT>'
+```
+Then execute the following command in the ArrowheadUI/ folder.
+
 ```
 ng build --prod
 ```
-Copy the content of the dist/ArrowheadUI from the UI application into the target/classes/static folder of the Spring Boot application and create the JAR file with maven. 
 
-The jar file is called DeviceRegistryServer-0.0.1-SNAPSHOT.jar by default. You can start the application by running the following command 
+Copy the content of the dist/ArrowheadUI from the UI application into the arrowheadDemo/target/classes/static folder of the Spring Boot application and create the JAR file with maven:
+
+```
+mvn install
+```
+
+The jar file is created under target folder and called DeviceRegistryServer-0.0.1-SNAPSHOT.jar by default. You can start the application by running the following command 
 
 ```
 java -jar DeviceRegistryServer-0.0.1-SNAPSHOT.jar

@@ -14,7 +14,7 @@ export interface Device {
 
 @Injectable()
 export class DevicesService {
-  serverUrl = 'http://' + environment.serverUrl +':8080/device';
+  serverUrl = 'http://' + environment.serverUrl + ':' + environment.serverPort + '/device';
 
 
   constructor(private http: HttpClient) { }
