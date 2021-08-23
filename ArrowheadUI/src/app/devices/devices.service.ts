@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import {environment} from '../../environments/environment.prod';
 
 export interface Device {
   device_name: string;
@@ -13,7 +14,7 @@ export interface Device {
 
 @Injectable()
 export class DevicesService {
-  serverUrl = 'http://localhost:8080/device';
+  serverUrl = 'http://' + environment.serverUrl +':8080/device';
 
 
   constructor(private http: HttpClient) { }

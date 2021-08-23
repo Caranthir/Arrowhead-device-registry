@@ -9,6 +9,7 @@ import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class DeviceController {
 
@@ -20,14 +21,12 @@ public class DeviceController {
         this.service = service;
     }
 
-    @CrossOrigin
     @GetMapping("/device")
     List<Device> all() {
         //TODO this should also update the status of the devices. for this it should contact the devices.
         return service.updateStatus();
     }
 
-    @CrossOrigin
     @PostMapping("/device")
     Device newDevice(@RequestBody Device newDevice) {
         newDevice.setLast_notification_date(new Timestamp(Calendar.getInstance().getTimeInMillis()));
